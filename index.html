@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    background:linear-gradient(to bottom,#ffd6e8,#fff5fa);
+    font-family:Georgia,serif;
+    overflow:hidden;
+}
+
+/* START SCREEN */
+.start{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(to bottom,#ffd6e8,#fff5fa);
+    z-index:100;
+    cursor:pointer;
+}
+.start h1{
+    color:#c9184a;
+    animation:pulse 2s infinite;
+}
+@keyframes pulse{
+    0%{opacity:.4}
+    50%{opacity:1}
+    100%{opacity:.4}
+}
+
+/* TITLE */
+.title{
+    position:absolute;
+    top:15px;
+    width:100%;
+    text-align:center;
+    font-size:30px;
+    color:#c9184a;
+    display:none;
+    z-index:10;
+}
+
+/* BODY MESSAGE */
+.body-message{
+    position:absolute;
+    top:70px;
+    left:50%;
+    transform:translateX(-50%);
+    width:90%;
+    max-width:650px;
+    text-align:center;
+    font-size:17px;
+    line-height:1.6;
+    color:#b5174f;
+    display:none;
+    z-index:9;
+}
+.body-message .highlight{
+    margin-top:18px;
+    font-size:22px;
+    color:#c9184a;
+    font-weight:bold;
+}
+
+/* HEART NOTES */
+.heart-note{
+    position:absolute;
+    width:90px;
+    height:90px;
+    background:#ff5c8a;
+    transform:rotate(-45deg);
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:12px;
+    text-align:center;
+    padding:10px;
+    animation:float 4s ease-in-out infinite;
+}
+.heart-note::before,
+.heart-note::after{
+    content:"";
+    position:absolute;
+    width:90px;
+    height:90px;
+    background:#ff5c8a;
+    border-radius:50%;
+}
+.heart-note::before{top:-45px;left:0;}
+.heart-note::after{left:45px;top:0;}
+
+@keyframes float{
+    0%{transform:translateY(0) rotate(-45deg)}
+    50%{transform:translateY(-10px) rotate(-45deg)}
+    100%{transform:translateY(0) rotate(-45deg)}
+}
+
+/* HEART NOTE POSITIONS */
+.h1{top:48%;left:6%}
+.h2{top:40%;left:26%}
+.h3{top:36%;left:50%;transform:translateX(-50%) rotate(-45deg)}
+.h4{top:40%;right:26%}
+.h5{top:48%;right:6%}
+
+/* TEDDY */
+.teddy{
+    position:absolute;
+    bottom:18px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:64px;
+}
+
+/* ROSES */
+.petal{
+    position:absolute;
+    font-size:20px;
+    animation:fall 10s linear infinite;
+}
+@keyframes fall{
+    from{transform:translateY(-10vh)}
+    to{transform:translateY(110vh)}
+}
+
+/* HEART BALLOONS */
+.balloon{
+    position:absolute;
+    font-size:26px;
+    animation:floatUp 12s linear infinite;
+}
+@keyframes floatUp{
+    from{transform:translateY(110vh)}
+    to{transform:translateY(-20vh)}
+}
+
+/* FIREWORKS */
+.firework{
+    position:absolute;
+    font-size:26px;
+    animation:boom 2s ease-out forwards;
+}
+@keyframes boom{
+    from{transform:scale(0);opacity:1}
+    to{transform:scale(3);opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<div class="start" onclick="startAll()">
+    <h1>Tap to begin 💖</h1>
+</div>
+
+<div class="title" id="title">Happy Birthday ❤️</div>
+
+<div class="body-message" id="bodyMessage">
+    <p>Today isn’t just your birthday.</p>
+    <p>It’s the day the world got a little more beautiful.</p>
+
+    <p>You are not just someone special<br>
+    you are comfort, smile, peace, and magic in one soul.</p>
+
+    <p>Every laugh of yours stays in my mind longer than it should.<br>
+    Every silence with you still feels warm.</p>
+
+    <p>I don’t know what the future holds,<br>
+    but I know one thing for sure<br>
+    you matter to me more than words can explain.</p>
+
+    <p class="highlight">Happy Birthday, MAGGIE JI 🙃</p>
+</div>
+
+<!-- HEART MEMORIES -->
+<div class="heart-note h1">understood each other</div>
+<div class="heart-note h2">riverfront calm</div>
+<div class="heart-note h3">Lady Singham</div>
+<div class="heart-note h4">shadow girl</div>
+<div class="heart-note h5">peace together</div>
+
+<div class="teddy">🧸</div>
+
+<script>
+function startAll(){
+    document.querySelector('.start').style.display='none';
+    document.getElementById('title').style.display='block';
+    document.getElementById('bodyMessage').style.display='block';
+
+    // ROSES
+    for(let i=0;i<25;i++){
+        let r=document.createElement('div');
+        r.className='petal';
+        r.innerHTML='🌹';
+        r.style.left=Math.random()*100+'vw';
+        r.style.animationDelay=Math.random()*5+'s';
+        document.body.appendChild(r);
+    }
+
+    // HEART BALLOONS
+    for(let i=0;i<12;i++){
+        let b=document.createElement('div');
+        b.className='balloon';
+        b.innerHTML='💖';
+        b.style.left=Math.random()*100+'vw';
+        b.style.animationDelay=Math.random()*6+'s';
+        document.body.appendChild(b);
+    }
+
+    // FIREWORKS
+    setTimeout(()=>{
+        for(let i=0;i<18;i++){
+            let f=document.createElement('div');
+            f.className='firework';
+            f.innerHTML='✨';
+            f.style.left=Math.random()*100+'vw';
+            f.style.top=Math.random()*50+'vh';
+            document.body.appendChild(f);
+        }
+    },6000);
+}
+</script>
+
+</body>
+</html>
