@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -14,7 +14,7 @@ body{
     overflow:hidden;
 }
 
-/* START SCREEN */
+/* START */
 .start{
     position:fixed;
     inset:0;
@@ -38,29 +38,27 @@ body{
 /* TITLE */
 .title{
     position:absolute;
-    top:15px;
+    top:16px;
     width:100%;
     text-align:center;
     font-size:30px;
     color:#c9184a;
     display:none;
-    z-index:10;
 }
 
-/* BODY MESSAGE */
+/* MESSAGE */
 .body-message{
     position:absolute;
     top:70px;
     left:50%;
     transform:translateX(-50%);
     width:90%;
-    max-width:650px;
+    max-width:680px;
     text-align:center;
     font-size:17px;
-    line-height:1.6;
+    line-height:1.65;
     color:#b5174f;
     display:none;
-    z-index:9;
 }
 .body-message .highlight{
     margin-top:18px;
@@ -80,10 +78,6 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    color:white;
-    font-size:12px;
-    text-align:center;
-    padding:10px;
     animation:float 4s ease-in-out infinite;
 }
 .heart-note::before,
@@ -98,26 +92,96 @@ body{
 .heart-note::before{top:-45px;left:0;}
 .heart-note::after{left:45px;top:0;}
 
+.heart-note span{
+    transform:rotate(45deg);
+    color:white;
+    font-size:12px;
+    text-align:center;
+    line-height:1.2;
+    max-width:60px;
+}
+
+/* HEART POSITIONS */
+.h1{top:46%;left:6%}
+.h2{top:38%;left:26%}
+.h3{top:34%;left:50%;transform:translateX(-50%) rotate(-45deg)}
+.h4{top:38%;right:26%}
+.h5{top:46%;right:6%}
+
 @keyframes float{
     0%{transform:translateY(0) rotate(-45deg)}
     50%{transform:translateY(-10px) rotate(-45deg)}
     100%{transform:translateY(0) rotate(-45deg)}
 }
 
-/* HEART NOTE POSITIONS */
-.h1{top:48%;left:6%}
-.h2{top:40%;left:26%}
-.h3{top:36%;left:50%;transform:translateX(-50%) rotate(-45deg)}
-.h4{top:40%;right:26%}
-.h5{top:48%;right:6%}
-
-/* TEDDY */
-.teddy{
+/* TEDDY + CHOCOLATE */
+.teddy-wrap{
     position:absolute;
     bottom:18px;
     left:50%;
     transform:translateX(-50%);
-    font-size:64px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.teddy{font-size:64px;}
+.chocolate{
+    font-size:36px;
+    animation:chocoBounce 2.5s ease-in-out infinite;
+}
+@keyframes chocoBounce{
+    0%{transform:translateY(0)}
+    50%{transform:translateY(-6px)}
+    100%{transform:translateY(0)}
+}
+
+/* TINY HEART */
+.tiny-heart{
+    position:absolute;
+    top:-28px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:18px;
+    animation:heartFloat 2.5s ease-in-out infinite;
+}
+@keyframes heartFloat{
+    0%{transform:translateX(-50%) translateY(0)}
+    50%{transform:translateX(-50%) translateY(-8px)}
+    100%{transform:translateX(-50%) translateY(0)}
+}
+
+/* HEART TREE */
+.heart-tree{
+    position:absolute;
+    bottom:20px;
+    right:30px;
+    width:120px;
+    height:160px;
+}
+.heart-tree .trunk{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:12px;
+    height:50px;
+    background:#8d5524;
+    border-radius:6px;
+}
+.heart-tree .leaves{
+    position:absolute;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+    width:100px;
+    height:100px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+.heart-tree .leaves span{
+    font-size:24px;
+    margin:-2px;
 }
 
 /* ROSES */
@@ -131,7 +195,7 @@ body{
     to{transform:translateY(110vh)}
 }
 
-/* HEART BALLOONS */
+/* FLOATING HEARTS */
 .balloon{
     position:absolute;
     font-size:26px;
@@ -181,13 +245,28 @@ body{
 </div>
 
 <!-- HEART MEMORIES -->
-<div class="heart-note h1">understood each other</div>
-<div class="heart-note h2">riverfront calm</div>
-<div class="heart-note h3">Lady Singham</div>
-<div class="heart-note h4">shadow girl</div>
-<div class="heart-note h5">peace together</div>
+<div class="heart-note h1"><span>understood each other</span></div>
+<div class="heart-note h2"><span>riverfront calm</span></div>
+<div class="heart-note h3"><span>Lady Singham</span></div>
+<div class="heart-note h4"><span>shadow girl</span></div>
+<div class="heart-note h5"><span>peace together</span></div>
 
-<div class="teddy">🧸</div>
+<!-- TEDDY + KITKAT -->
+<div class="teddy-wrap">
+    <div class="tiny-heart">💖</div>
+    <span class="teddy">🧸</span>
+    <span class="chocolate">🍫</span>
+</div>
+
+<!-- HEART TREE -->
+<div class="heart-tree">
+    <div class="trunk"></div>
+    <div class="leaves">
+        <span>💖</span><span>💖</span><span>💖</span>
+        <span>💖</span><span>💖</span><span>💖</span>
+        <span>💖</span><span>💖</span>
+    </div>
+</div>
 
 <script>
 function startAll(){
@@ -195,7 +274,6 @@ function startAll(){
     document.getElementById('title').style.display='block';
     document.getElementById('bodyMessage').style.display='block';
 
-    // ROSES
     for(let i=0;i<25;i++){
         let r=document.createElement('div');
         r.className='petal';
@@ -205,7 +283,6 @@ function startAll(){
         document.body.appendChild(r);
     }
 
-    // HEART BALLOONS
     for(let i=0;i<12;i++){
         let b=document.createElement('div');
         b.className='balloon';
@@ -215,7 +292,6 @@ function startAll(){
         document.body.appendChild(b);
     }
 
-    // FIREWORKS
     setTimeout(()=>{
         for(let i=0;i<18;i++){
             let f=document.createElement('div');
