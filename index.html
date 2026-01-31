@@ -38,7 +38,7 @@ body{
 /* TITLE */
 .title{
     position:absolute;
-    top:16px;
+    top:18px;
     width:100%;
     text-align:center;
     font-size:30px;
@@ -49,7 +49,7 @@ body{
 /* MESSAGE */
 .body-message{
     position:absolute;
-    top:70px;
+    top:75px;
     left:50%;
     transform:translateX(-50%);
     width:90%;
@@ -67,57 +67,38 @@ body{
     font-weight:bold;
 }
 
-/* HEART NOTES */
-.heart-note{
+/* HEART TREE (NO TRUNK, NO TEXT) */
+.heart-tree{
     position:absolute;
-    width:90px;
-    height:90px;
-    background:#ff5c8a;
-    transform:rotate(-45deg);
-    border-radius:14px;
+    width:110px;
+    height:110px;
     display:flex;
-    align-items:center;
+    flex-wrap:wrap;
     justify-content:center;
-    animation:float 4s ease-in-out infinite;
+    align-items:center;
+    animation:treeFloat 4s ease-in-out infinite;
 }
-.heart-note::before,
-.heart-note::after{
-    content:"";
-    position:absolute;
-    width:90px;
-    height:90px;
-    background:#ff5c8a;
-    border-radius:50%;
-}
-.heart-note::before{top:-45px;left:0;}
-.heart-note::after{left:45px;top:0;}
-
-.heart-note span{
-    transform:rotate(45deg);
-    color:white;
-    font-size:12px;
-    text-align:center;
-    line-height:1.2;
-    max-width:60px;
+.heart-tree span{
+    font-size:22px;
+    margin:-2px;
 }
 
-/* HEART POSITIONS */
-.h1{top:46%;left:6%}
-.h2{top:38%;left:26%}
-.h3{top:34%;left:50%;transform:translateX(-50%) rotate(-45deg)}
-.h4{top:38%;right:26%}
-.h5{top:46%;right:6%}
+/* CORNER POSITIONS */
+.top-left{top:15px;left:15px;}
+.top-right{top:15px;right:15px;}
+.bottom-left{bottom:15px;left:15px;}
+.bottom-right{bottom:15px;right:15px;}
 
-@keyframes float{
-    0%{transform:translateY(0) rotate(-45deg)}
-    50%{transform:translateY(-10px) rotate(-45deg)}
-    100%{transform:translateY(0) rotate(-45deg)}
+@keyframes treeFloat{
+    0%{transform:translateY(0)}
+    50%{transform:translateY(-6px)}
+    100%{transform:translateY(0)}
 }
 
-/* TEDDY + CHOCOLATE */
+/* TEDDY + KITKAT */
 .teddy-wrap{
     position:absolute;
-    bottom:18px;
+    bottom:22px;
     left:50%;
     transform:translateX(-50%);
     display:flex;
@@ -135,7 +116,7 @@ body{
     100%{transform:translateY(0)}
 }
 
-/* TINY HEART */
+/* TINY HEART ABOVE */
 .tiny-heart{
     position:absolute;
     top:-28px;
@@ -148,40 +129,6 @@ body{
     0%{transform:translateX(-50%) translateY(0)}
     50%{transform:translateX(-50%) translateY(-8px)}
     100%{transform:translateX(-50%) translateY(0)}
-}
-
-/* HEART TREE */
-.heart-tree{
-    position:absolute;
-    bottom:20px;
-    right:30px;
-    width:120px;
-    height:160px;
-}
-.heart-tree .trunk{
-    position:absolute;
-    bottom:0;
-    left:50%;
-    transform:translateX(-50%);
-    width:12px;
-    height:50px;
-    background:#8d5524;
-    border-radius:6px;
-}
-.heart-tree .leaves{
-    position:absolute;
-    bottom:40px;
-    left:50%;
-    transform:translateX(-50%);
-    width:100px;
-    height:100px;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-}
-.heart-tree .leaves span{
-    font-size:24px;
-    margin:-2px;
 }
 
 /* ROSES */
@@ -244,28 +191,36 @@ body{
     <p class="highlight">Happy Birthday, MAGGIE JI 🙃</p>
 </div>
 
-<!-- HEART MEMORIES -->
-<div class="heart-note h1"><span>understood each other</span></div>
-<div class="heart-note h2"><span>riverfront calm</span></div>
-<div class="heart-note h3"><span>Lady Singham</span></div>
-<div class="heart-note h4"><span>shadow girl</span></div>
-<div class="heart-note h5"><span>peace together</span></div>
+<!-- HEART TREES IN ALL CORNERS -->
+<div class="heart-tree top-left">
+    <span>💖</span><span>💖</span><span>💖</span>
+    <span>💖</span><span>💖</span><span>💖</span>
+    <span>💖</span><span>💖</span>
+</div>
+
+<div class="heart-tree top-right">
+    <span>💖</span><span>💖</span><span>💖</span>
+    <span>💖</span><span>💖</span><span>💖</span>
+    <span>💖</span><span>💖</span>
+</div>
+
+<div class="heart-tree bottom-left">
+    <span>💖</span><span>💖</span><span>💖</span>
+    <span>💖</span><span>💖</span><span>💖</span>
+    <span>💖</span><span>💖</span>
+</div>
+
+<div class="heart-tree bottom-right">
+    <span>💖</span><span>💖</span><span>💖</span>
+    <span>💖</span><span>💖</span><span>💖</span>
+    <span>💖</span><span>💖</span>
+</div>
 
 <!-- TEDDY + KITKAT -->
 <div class="teddy-wrap">
     <div class="tiny-heart">💖</div>
     <span class="teddy">🧸</span>
     <span class="chocolate">🍫</span>
-</div>
-
-<!-- HEART TREE -->
-<div class="heart-tree">
-    <div class="trunk"></div>
-    <div class="leaves">
-        <span>💖</span><span>💖</span><span>💖</span>
-        <span>💖</span><span>💖</span><span>💖</span>
-        <span>💖</span><span>💖</span>
-    </div>
 </div>
 
 <script>
