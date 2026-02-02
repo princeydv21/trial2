@@ -67,7 +67,7 @@ body{
     font-weight:bold;
 }
 
-/* HEART TREE (NO TRUNK, NO TEXT) */
+/* HEART TREE */
 .heart-tree{
     position:absolute;
     width:110px;
@@ -82,6 +82,11 @@ body{
     font-size:22px;
     margin:-2px;
 }
+@keyframes treeFloat{
+    0%{transform:translateY(0)}
+    50%{transform:translateY(-6px)}
+    100%{transform:translateY(0)}
+}
 
 /* CORNER POSITIONS */
 .top-left{top:15px;left:15px;}
@@ -89,11 +94,21 @@ body{
 .bottom-left{bottom:15px;left:15px;}
 .bottom-right{bottom:15px;right:15px;}
 
-@keyframes treeFloat{
-    0%{transform:translateY(0)}
-    50%{transform:translateY(-6px)}
-    100%{transform:translateY(0)}
+/* CORNER NOTES */
+.corner-note{
+    position:absolute;
+    max-width:160px;
+    font-size:14px;
+    color:#b5174f;
+    text-align:center;
+    line-height:1.3;
 }
+
+/* note placements */
+.note-top-left{top:135px;left:15px;}
+.note-top-right{top:135px;right:15px;}
+.note-bottom-left{bottom:135px;left:15px;}
+.note-bottom-right{bottom:135px;right:15px;}
 
 /* TEDDY + KITKAT */
 .teddy-wrap{
@@ -116,7 +131,7 @@ body{
     100%{transform:translateY(0)}
 }
 
-/* TINY HEART ABOVE */
+/* TINY HEART */
 .tiny-heart{
     position:absolute;
     top:-28px;
@@ -191,7 +206,7 @@ body{
     <p class="highlight">Happy Birthday, MAGGIE JI 🙃</p>
 </div>
 
-<!-- HEART TREES IN ALL CORNERS -->
+<!-- HEART TREES -->
 <div class="heart-tree top-left">
     <span>💖</span><span>💖</span><span>💖</span>
     <span>💖</span><span>💖</span><span>💖</span>
@@ -214,6 +229,19 @@ body{
     <span>💖</span><span>💖</span><span>💖</span>
     <span>💖</span><span>💖</span><span>💖</span>
     <span>💖</span><span>💖</span>
+</div>
+
+<!-- CORNER NOTES -->
+<div class="corner-note note-top-left">Chiki lover</div>
+<div class="corner-note note-top-right">Lady Singham</div>
+<div class="corner-note note-bottom-left">
+    a support system,<br>
+    a listener,<br>
+    caring & understanding
+</div>
+<div class="corner-note note-bottom-right">
+    a beautiful soul<br>
+    with the most beautiful smile
 </div>
 
 <!-- TEDDY + KITKAT -->
